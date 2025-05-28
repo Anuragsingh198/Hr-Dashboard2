@@ -75,7 +75,7 @@ A modern web application designed to assist HR managers in efficiently tracking 
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone ""
+   git clone "https://github.com/Anuragsingh198/Hr-Dashboard2.git"
    cd Hr-dashboard
 Install dependencies (Node.js v16+ required):
 
