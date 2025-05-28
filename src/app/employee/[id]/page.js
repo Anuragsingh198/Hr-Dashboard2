@@ -7,6 +7,7 @@ import { ThemeContext } from '@/context/ThemeContext';
 import Rating from '@/components/ui/rating';
 import TabButton from '@/components/ui/TabButton';
 import Image from 'next/image';
+
 const tabs = ['Overview', 'Projects', 'Feedback'];
 
 const getRandomHistory = () => {
@@ -47,7 +48,7 @@ export default function EmployeeDetailPage() {
     if (!users) return <p className="mt-10 text-center">Loading users...</p>;
 
     const user = users.find(u => u.id === Number(id));
-    const history = useMemo(() => getRandomHistory(), [id]);
+    const history = useMemo(() => getRandomHistory(), []);  // <-- removed `id` from deps
 
     if (!user) return <p className="mt-10 text-center">User not found.</p>;
 
@@ -72,7 +73,6 @@ export default function EmployeeDetailPage() {
                                 />
                             </div>
                         </div>
-
 
                         <p className={`font-semibold text-lg ${infoColor}`}>Name:</p>
                         <p className={`text-xl font-medium ${infoColor}`}>{user.firstName} {user.lastName}</p>
@@ -160,7 +160,7 @@ export default function EmployeeDetailPage() {
                             <section aria-labelledby="feedback-title" tabIndex={0}>
                                 <h3 id="feedback-title" className="text-2xl font-semibold mb-3">Feedback</h3>
                                 <blockquote className={`${infoColor} italic border-l-4 border-blue-400 pl-4`}>
-                                    "{user.firstName} is punctual, detail-oriented, and consistently exceeds expectations in all assigned tasks."
+                                    &quot;{user.firstName} is punctual, detail-oriented, and consistently exceeds expectations in all assigned tasks.&quot;
                                 </blockquote>
                             </section>
                         )}
