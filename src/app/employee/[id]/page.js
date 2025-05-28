@@ -45,10 +45,10 @@ export default function EmployeeDetailPage() {
     const { theme } = useContext(ThemeContext);
     const [activeTab, setActiveTab] = useState('Overview');
 
+    const history = useMemo(() => getRandomHistory(), []);  // <-- removed `id` from deps
     if (!users) return <p className="mt-10 text-center">Loading users...</p>;
 
     const user = users.find(u => u.id === Number(id));
-    const history = useMemo(() => getRandomHistory(), []);  // <-- removed `id` from deps
 
     if (!user) return <p className="mt-10 text-center">User not found.</p>;
 
